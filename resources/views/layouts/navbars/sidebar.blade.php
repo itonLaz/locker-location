@@ -98,7 +98,7 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('user.index') }}">
-                                    {{ __('Management') }}
+                                    {{ __('Users List') }}
                                 </a>
                             </li>
                         </ul>
