@@ -85,7 +85,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" href="#navbar-examples" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="navbar-examples">
-                        <i class="fab fa-laravel" style="color: #f4645f;"></i>
+                        <i class="ni ni-single-02" style="color: #f4645f;"></i>
                         <span class="nav-link-text" style="color: #f4645f;">{{ __('User') }}</span>
                     </a>
 
@@ -106,7 +106,20 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="">
+                        <i class="ni ni-settings"></i>
                         {{ __('Roles Management')}}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">
+                        <i class="ni ni-single-copy-04"></i>
+                        {{ __('Locker Order Booking')}}
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">
+                        <i class="ni ni-folder-17"></i>
+                        {{ __('Reports')}}
                     </a>
                 </li>
                 <li class="nav-item">
