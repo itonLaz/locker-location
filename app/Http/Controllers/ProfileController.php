@@ -5,9 +5,26 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProfileRequest;
 use App\Http\Requests\PasswordRequest;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Role;
+use App\Models\User;
 
 class ProfileController extends Controller
-{
+{   
+    /**
+     * Show the form for creating new profile.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function create()
+    {
+        $data['roles'] = Role::all();
+        // dd($all_users_with_all_their_roles = User::with('roles')->get());
+        // $user = User::find(7);
+        // echo'<pre>'; print_r($user->getAllPermissions());
+        // exit();
+        return view('profile.create', $data);
+    }
+    
     /**
      * Show the form for editing the profile.
      *
