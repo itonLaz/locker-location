@@ -17,7 +17,9 @@
                             <h3 class="mb-0">Users</h3>
                         </div>
                         <div class="col-4 text-right">
+                            @can('add users')
                             <a href="{{ route('profile.create') }}" class="btn btn-sm btn-primary">Add user</a>
+                            @endcan
                         </div>
                     </div>
                 </div>

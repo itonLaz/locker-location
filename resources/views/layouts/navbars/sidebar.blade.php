@@ -88,19 +88,20 @@
                         <i class="ni ni-single-02" style="color: #f4645f;"></i>
                         <span class="nav-link-text" style="color: #f4645f;">{{ __('User') }}</span>
                     </a>
-
-                    <div class="collapse show" id="user-collapse">
+                    <div class="collapse" id="user-collapse">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('profile.edit') }}">
                                     {{ __('Profile') }}
                                 </a>
                             </li>
+                            @can('view users')
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('user.index') }}">
                                     {{ __('Management') }}
                                 </a>
                             </li>
+                            @endcan
                         </ul>
                     </div>
                 </li>
@@ -111,36 +112,39 @@
                     </a>
                     <div class="collapse" id="roles-permission-collapse">
                         <ul class="nav nav-sm flex-column">
+                            @can('view roles')
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('role.index') }}">
                                     {{ __('Roles')}}
                                 </a>
                             </li>
+                            @endcan
+                            @can('view permissions')
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('role.index') }}">
+                                <a class="nav-link" href="{{ route('permission.index') }}">
                                     {{ __('Permissions')}}
                                 </a>
                             </li>
+                            @endcan
                         </ul>
                     </div>
                 </li>
+                @can('create booking')
                 <li class="nav-item">
                     <a class="nav-link" href="">
                         <i class="ni ni-single-copy-04"></i>
                         {{ __('Locker Order Booking')}}
                     </a>
                 </li>
+                @endcan
+                @can('view report')
                 <li class="nav-item">
                     <a class="nav-link" href="">
                         <i class="ni ni-folder-17"></i>
                         {{ __('Reports')}}
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="ni ni-circle-08 text-pink"></i> {{ __('Register') }}
-                    </a>
-                </li>
+                @endcan
             </ul>
         </div>
     </div>

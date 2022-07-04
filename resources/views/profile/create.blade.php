@@ -71,6 +71,18 @@
                                         <input class="form-control" placeholder="{{ __('Confirm Password') }}" type="password" name="password_confirmation" required>
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <div class="input-group input-group-alternative">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="ni ni-settings"></i></span>
+                                        </div>
+                                        <select class="form-control" placeholder="{{ __('Roles') }}" name="role" required>
+                                            @foreach($roles as $role)
+                                                <option value="{{ $role->name }}">{{ $role->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-primary mt-4">{{ __('Create account') }}</button>
                                 </div>
