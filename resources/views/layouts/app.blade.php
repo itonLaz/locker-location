@@ -44,5 +44,7 @@
         
         <!-- Argon JS -->
         <script src="{{ asset('argon') }}/js/argon.js?v=1.0.0"></script>
+        <script src="{{ mix('js/app.js') }}" defer></script>
+        <script src="/js/role.js" defer></script>
     </body>
 </html>

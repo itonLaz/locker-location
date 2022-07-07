@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Permission;
-
+use App\Models\RoleHasPermission;
 class PermissionController extends Controller
 {
     /**
@@ -22,7 +22,24 @@ class PermissionController extends Controller
         // })->get();
         // echo '<pre>'; print_r($data);
         // exit();
-        $data['permissions'] = Permission::all();
+        $data['permissions'] = $this->getAllPermission();
         return view('permissions.index', $data);
+    }
+
+    public function role_permissions($id)
+    {
+        $data = [];
+        $pivot_value = RoleHasPermission::where('role_id', $id)->pluck('permission_id');
+        $permissions = Permission::whereIn('id', $pivot_value)->get();
+        
+        $data['role_permissions'] = $permissions;
+        $data['all_permissions'] = $this->getAllPermission();
+        
+        return $data;
+    }
+
+    private function getAllPermission()
+    {
+        return Permission::all();
     }
 }
