@@ -29,7 +29,6 @@
                                 <tr>
                                     <th scope="col">Name</th>
                                     <th scope="col">Creation Date</th>
-                                    <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -37,7 +36,6 @@
                                     <tr>
                                         <td>{{ $permission->name }} </td>
                                         <td>{{ $permission->created_at }}</td>
-                                        <td></td>
                                     </tr>
                                 @endforeach
                             </tbody>

@@ -6,6 +6,8 @@
         'description' => '',
         'class' => 'col-lg-12'
     ])   
+    
+    @include('roles.modal')
 
     <div class="container-fluid mt--7">
         <div class="row">
@@ -28,8 +30,8 @@
                             <thead class="thead-light">
                                 <tr>
                                     <th scope="col">Name</th>
-                                    <th scope="col">Permissions</th>
                                     <th scope="col">Creation Date</th>
+                                    <th scope="col">Permissions</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
@@ -37,9 +39,11 @@
                                 @foreach($roles as $role)
                                     <tr>
                                         <td>{{ $role->name }} </td>
-                                        <td></td>
                                         <td>{{ $role->created_at }}</td>
-                                        <td></td>
+                                        <td> <button type="button" data-role_id="{{ $role->id }}" class="btn btn-sm btn-outline-info view_permissions" data-toggle="modal" data-target="#exampleModal" @cannot('view roles') disabled @endcan>View</button></td>
+                                        <td>
+                                            <button type="button" class="btn btn-sm btn-outline-danger" @cannot('delete roles') disabled @endcan>Delete</button>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
