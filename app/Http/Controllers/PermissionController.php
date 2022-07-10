@@ -30,11 +30,10 @@ class PermissionController extends Controller
     {
         $data = [];
         $pivot_value = RoleHasPermission::where('role_id', $id)->pluck('permission_id');
-        $permissions = Permission::whereIn('id', $pivot_value)->get();
+        $permissions = Permission::whereIn('id', $pivot_value)->get()->pluck('id');
         
         $data['role_permissions'] = $permissions;
         $data['all_permissions'] = $this->getAllPermission();
-        
         return $data;
     }
 
