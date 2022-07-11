@@ -30,7 +30,10 @@
         
         <div class="main-content">
             @include('layouts.navbars.navbar')
-            @yield('content')
+            <div id="app">
+                
+                @yield('content')
+            </div>
         </div>
 
         @guest()
@@ -46,5 +49,6 @@
         <script src="{{ asset('argon') }}/js/argon.js?v=1.0.0"></script>
         <script src="{{ mix('js/app.js') }}" defer></script>
         <script src="/js/role.js" defer></script>
+        <script src="/assets/vendor/sweetalert2/dist/sweetalert2.all.min.js"></script>
     </body>
 </html>

@@ -40,7 +40,7 @@
                                     <tr>
                                         <td>{{ $role->name }} </td>
                                         <td>{{ $role->created_at }}</td>
-                                        <td> <button type="button" data-role_id="{{ $role->id }}" class="btn btn-sm btn-outline-info view_permissions" data-toggle="modal" data-target="#exampleModal" @cannot('view roles') disabled @endcan>View</button></td>
+                                        <td> <button type="button" data-role_id="{{ $role->id }}" class="btn btn-sm btn-outline-info view_permissions" @cannot('view roles') disabled @endcan>View</button></td>
                                         <td>
                                             <button type="button" class="btn btn-sm btn-outline-danger" @cannot('delete roles') disabled @endcan>Delete</button>
                                         </td>

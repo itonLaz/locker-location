@@ -37,6 +37,21 @@ class PermissionController extends Controller
         return $data;
     }
 
+    public function update_permissions($id, Request $request)
+    {
+        RoleHasPermission::where('role_id', $id)->delete();
+
+        $values = $request->permissions;
+        $data = [];
+        foreach($values as $value) {
+            array_push($data, ['role_id' => $id, 'permission_id' => $value]);
+        }
+
+        RoleHasPermission::insert($data);
+
+        return response()->json($data, 201);
+    }
+    
     private function getAllPermission()
     {
         return Permission::all();
