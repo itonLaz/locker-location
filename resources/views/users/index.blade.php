@@ -29,6 +29,7 @@
                             <tr>
                                 <th scope="col">Name</th>
                                 <th scope="col">Email</th>
+                                <th scope="col">Role</th>
                                 <th scope="col">Creation Date</th>
                                 <th scope="col"></th>
                             </tr>
@@ -38,6 +39,7 @@
                                 <tr>
                                     <td>{{ $user->name }} </td>
                                     <td>{{ $user->email }} </td>
+                                    <td>{{ $user->role_name }}</td>
                                     <td>{{ $user->created_at }}</td>
                                     <td>Buttons</td>
                                 </tr>
