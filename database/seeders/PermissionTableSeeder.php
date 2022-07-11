@@ -37,6 +37,20 @@ class PermissionTableSeeder extends Seeder
         Permission::create(['name' => 'edit permissions']);
         Permission::create(['name' => 'delete permissions']);
 
+
+        $super_admin_role = Role::create(['name' => 'Super Admin']);
+        //No need to add permission since it is already set via Gate::before, see AuthServiceProvider
+
+        $super_admin = User::create([
+            'name' => 'Super Admin',
+            'email' => 'super_admin@argon.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('secret'),
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
+        $super_admin->assignRole($super_admin_role);
         
         //Create Admin Role and Apply Roles
         $admin_role = Role::create(['name' => 'admin']);
@@ -84,21 +98,6 @@ class PermissionTableSeeder extends Seeder
             'updated_at' => now()
         ]);
         $member->assignRole($member_role);
-        
-
-        $super_admin_role = Role::create(['name' => 'Super Admin']);
-        //No need to add permission since it is already set via Gate::before, see AuthServiceProvider
-
-        $super_admin = User::create([
-            'name' => 'Super Admin', 
-        	'email' => 'super_admin@argon.com',
-        	'email_verified_at' => now(),
-            'password' => Hash::make('secret'),
-            'created_at' => now(),
-            'updated_at' => now()
-        ]);
-
-        $super_admin->assignRole($super_admin_role);
         
     }
 }

@@ -45,5 +45,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
 
 	Route::get('/role-permissions/{role_id}', [PermissionController::class, 'role_permissions']);
+	Route::post('/role-permissions/{role_id}', [PermissionController::class, 'update_permissions']);
+
 });
 
