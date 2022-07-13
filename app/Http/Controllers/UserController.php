@@ -18,11 +18,14 @@ class UserController extends Controller
      */
     public function index(User $model)
     {
-        $data['users'] = User::orderBy('created_at', 'desc')->get();
-
-        // $all_users_with_all_their_roles = User::with('permissions')->get();
-        // dd($all_users_with_all_their_roles);
+        $data['users'] = User::orderBy('created_at', 'desc')->with('roles')->get();
         
+        foreach($data['users'] as $key => $user) {
+            $role = $user->roles->first();
+            $data['users'][$key]['role_id'] = $role->id;
+            $data['users'][$key]['role_name'] = $role->name;
+        }
+
         return view('users.index', $data);
     }
 
