@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RolesController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,6 +33,7 @@ Route::group(['middleware' => 'auth'], function () {
 	// Route::resource('profile', 'App\Http\Controllers\ProfileController');
 
 	Route::get('/profile/create', [ProfileController::class, 'create'])->name('profile.create');
+	Route::get('/roles/create', [RolesController::class, 'show_form'])->name('role.create');
 
 	Route::get('/roles', ['as' => 'role.index', 'uses' => 'App\Http\Controllers\RolesController@index']);
 	Route::get('/permissions', ['as' => 'permission.index', 'uses' => 'App\Http\Controllers\PermissionController@index']);
@@ -46,6 +48,9 @@ Route::group(['middleware' => 'auth'], function () {
 
 	Route::get('/role-permissions/{role_id}', [PermissionController::class, 'role_permissions']);
 	Route::post('/role-permissions/{role_id}', [PermissionController::class, 'update_permissions']);
+
+	Route::post('/register', [UserController::class, 'process_signup'])->name('register');
+	Route::post('/roles', [RolesController::class, 'insert_role'])->name('role.insert');
 
 });
 

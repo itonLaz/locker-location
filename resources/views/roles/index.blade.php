@@ -20,7 +20,7 @@
                             </div>
                             <div class="col-4 text-right">
                                 @can('add roles')
-                                <a href="{{ route('profile.create') }}" class="btn btn-sm btn-primary">Add Role</a>
+                                <a href="{{ route('role.create') }}" class="btn btn-sm btn-primary">Add Role</a>
                                 @endcan
                             </div>
                         </div>

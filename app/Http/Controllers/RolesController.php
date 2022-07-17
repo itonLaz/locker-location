@@ -1,7 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Role;
+
+use App\Models\Permission;
+use Spatie\Permission\Models\Role;
+use Illuminate\Http\Request;
 
 class RolesController extends Controller
 {
@@ -24,4 +27,25 @@ class RolesController extends Controller
         // dd($data);
         return view('roles.index', $data);
     }
+
+    public function show_form()
+    {
+        $data['permissions'] = Permission::all();
+
+        return view('roles.create', $data);
+    }
+    
+    public function insert_role(Request $request)
+    {
+        
+        $role = Role::create(['name' => $request->name]);
+        // dd($request->name);
+
+        foreach ($request->permissions as $value) {
+            $role->givePermissionTo($value);
+        }
+
+        echo 'done'; exit();
+    }
+    
 }
