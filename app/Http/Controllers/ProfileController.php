@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProfileRequest;
 use App\Http\Requests\PasswordRequest;
 use Illuminate\Support\Facades\Hash;
-use App\Models\Role;
+// use App\Models\Role;
+use Spatie\Permission\Models\Role;
 use App\Models\User;
 
 class ProfileController extends Controller
@@ -32,7 +33,8 @@ class ProfileController extends Controller
      */
     public function edit()
     {
-        return view('profile.edit');
+        $data['roles'] = Role::all();
+        return view('profile.edit', $data);
     }
 
     /**
@@ -49,6 +51,10 @@ class ProfileController extends Controller
 
         auth()->user()->update($request->all());
 
+        //update current user's Role
+        $user = User::find(auth()->user()->id);
+        $user->syncRoles([$request->role]);
+        
         return back()->withStatus(__('Profile successfully updated.'));
     }
 
