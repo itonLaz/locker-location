@@ -110,6 +110,14 @@
                                         </span>
                                     @endif
                                 </div>
+                                <div class="form-group">
+                                    <label class="form-control-label" for="input-email">{{ __('Role') }}</label>
+                                    <select class="form-control" placeholder="{{ __('Roles') }}" name="role" required>
+                                        @foreach($roles as $role)
+                                            <option value="{{ $role->name }}">{{ $role->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
 
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-success mt-4">{{ __('Save') }}</button>
