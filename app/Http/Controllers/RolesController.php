@@ -45,7 +45,7 @@ class RolesController extends Controller
             $role->givePermissionTo($value);
         }
 
-        echo 'done'; exit();
+        return redirect()->action([RolesController::class, 'index']);
     }
     
 }
