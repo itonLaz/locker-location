@@ -57,12 +57,7 @@ class UserController extends Controller
 
         $user->assignRole($request->role);
 
-        return response()->json(
-            [
-                'success' => true,
-                'message' => 'Registration is completed'
-            ]
-        );
+        return redirect()->action([UserController::class, 'index']);
 
     }
 }
